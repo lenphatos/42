@@ -1,0 +1,6 @@
+Créez un programme appelé replace qui prend un nom de fichier et deux chaînes,
+appelons-les s1 et s2, qui ne sont PAS vides.
+Il ouvrira le fichier et écrira son contenu dans FILENAME.replace, après avoir remplacé chaque occurrence de s1 par s2.
+Bien sûr, vous gérerez les erreurs du mieux que vous pourrez et n’utiliserez pas les
+fonctions de manipulation du fichier C, car ce serait tricher, et tricher c’est mal, m’kay ?
+Vous rendrez des fichiers de test pour montrer que votre programme fonctionne.

@@ -1,0 +1,13 @@
+string replace_ocurrence(string s1, string s2, string text)
+{
+  size_t pos = 0;
+
+  while (1){
+    pos = text.find(s1, pos);
+    if (pos > text.size())
+      break ;
+    text.replace(pos, s1.size(), s2);
+    pos = text.find(s1, pos);
+  }
+  return (text);
+}
