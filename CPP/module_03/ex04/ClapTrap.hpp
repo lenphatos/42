@@ -1,0 +1,50 @@
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
+#include <iostream>
+
+class ClapTrap {
+
+	public:
+		//constructeur
+		ClapTrap();
+    ClapTrap(
+			std::string _Name,
+    	int         _HitPoints,
+    	int         _MaxhitPoints,
+    	int         _EnergyPoints,
+    	int         _MaxEnergyPoints,
+    	int         _Level,
+    	int         _MeleeAttackDamage,
+    	int         _RangedAttackDamage,
+    	int         _ArmorDamageReduction
+		);
+		ClapTrap(ClapTrap const& other);
+		ClapTrap &operator=(ClapTrap const &other);
+		~ClapTrap();
+    void rangedAttack(std::string const &target);
+    void meleeAttack(std::string const &target);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
+	std::string getName(void) const;
+
+		// methodes
+
+
+
+
+	protected:
+		// atributs
+    std::string _Name;
+    int         _HitPoints;
+    int         _MaxhitPoints;
+    int         _EnergyPoints;
+    int         _MaxEnergyPoints;
+    int         _Level;
+    int         _MeleeAttackDamage;
+    int         _RangedAttackDamage;
+    int         _ArmorDamageReduction;
+};
+
+void _whoami(std::string& name, unsigned int hp);
+
+#endif
