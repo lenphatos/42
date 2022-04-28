@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb
+spec:
+  selector:
+    app: influxdb
+  type: ClusterIP
+  ports:
+  - port: 8086
+    targetPort: 8086
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+  labels:
+    app: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+      tier: influxdb
+  template:
+    metadata:
+      labels:
+        app: influxdb
+        tier: influxdb
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: influxdb
+        image: influxdb-image
+        imagePullPolicy: Never
+        ports:
+        - name: influxdb
+          containerPort: 8086
+        volumeMounts:
+        - name: influxdb-persistent-storage
+          mountPath: "/var/lib/influxdb"
+      volumes:
+      - name: influxdb-persistent-storage
+        persistentVolumeClaim:
+          claimName: influxdb-pv-claim
