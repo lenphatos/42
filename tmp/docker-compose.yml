@@ -1,0 +1,27 @@
+version: "3.4"
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend/
+      dockerfile: ./Dockerfile
+    image: frontend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    command: npm run dev
+  backend:
+    container_name: backend
+    build:
+      context: ./backend/
+      dockerfile: ./Dockerfile
+      target: development
+    image: backend
+    command: npm run start:dev
+    ports:
+      - "3050:3050"
+    environment:
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+    restart: unless-stopped
